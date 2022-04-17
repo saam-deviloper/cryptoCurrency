@@ -1,0 +1,18 @@
+.container{
+    background-color: beige;
+}
+
+.group{
+    width: fit-content;
+}
+
+@media (min-width: 998px) {
+  .group{
+    width: 300px;
+  }
+}
+@media (min-width: 1200px) {
+    .group{
+      width: 600px;
+    }
+  }
