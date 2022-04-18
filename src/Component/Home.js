@@ -2,8 +2,9 @@ import React, { useContext, useState } from "react";
 import { Button, Container, Table } from "react-bootstrap";
 import { CoinContext } from "../context/CoinContextProvider";
 import Coin from "./shared/Coin";
+import {search} from '../helper/search'
 
-export default function Home() {
+export default function Home({searchedItem}) {
   const [itemCount, setItemCount] = useState(15);
   const dataContext = useContext(CoinContext);
   return (
@@ -34,9 +35,9 @@ export default function Home() {
                 </tr>
               </thead>
               <tbody>
-                {dataContext.map((item, index) =>
+                { (search(dataContext,searchedItem).map((item, index) =>
                   index < itemCount ? <Coin data={item} key={item.id} /> : ""
-                )}
+                ))}
               </tbody>
             </Table>
             <Button

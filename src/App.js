@@ -5,14 +5,18 @@ import Header from "./Component/Header";
 import { Route, Routes } from "react-router-dom";
 import Detail from "./Component/shared/Detail";
 import CoinContextProvider from "./context/CoinContextProvider";
+import Forum from "./Component/Forum";
+import { useState } from "react";
 
 function App() {
+  const [search,setSearch] = useState('')
   return (
       <CoinContextProvider>
-        <Header />
+        <Header setSearchedValue={setSearch} />
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Home searchedItem={search} />} />
           <Route path="/:id" element={<Detail />} />
+          <Route path="/forum" element={<Forum />} />
         </Routes>
       </CoinContextProvider>
   );
