@@ -9,6 +9,7 @@ import Forum from "./Component/Forum";
 import { useState } from "react";
 
 function App() {
+  //lift up state for use search input in home Comp
   const [search,setSearch] = useState('')
   return (
       <CoinContextProvider>

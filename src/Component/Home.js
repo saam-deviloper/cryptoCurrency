@@ -35,9 +35,9 @@ export default function Home({searchedItem}) {
                 </tr>
               </thead>
               <tbody>
-                { (search(dataContext,searchedItem).map((item, index) =>
+                { search(dataContext,searchedItem).map((item, index) =>
                   index < itemCount ? <Coin data={item} key={item.id} /> : ""
-                ))}
+                )}
               </tbody>
             </Table>
             <Button

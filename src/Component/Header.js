@@ -5,7 +5,7 @@ import logo from "../bitcoin.svg";
 import Style from "./header.module.css";
 
 export default function Header({setSearchedValue}) {
-  const [value, setValue] = useState();
+  const [value, setValue] = useState('');
   //search input value
   const onChangeHandler = (e) => {
     setValue(e.target.value);
@@ -13,6 +13,7 @@ export default function Header({setSearchedValue}) {
   const onSearch = (e)=>{
     e.preventDefault();
     setSearchedValue(value);
+    setValue('');
   }
   return (
     <>
@@ -26,7 +27,7 @@ export default function Header({setSearchedValue}) {
                 height="60"
                 className="d-inline-block"
                 alt="React Bootstrap logo"
-                animated
+                animated='true'
               />
               Shitcoin
             </Navbar.Brand>
