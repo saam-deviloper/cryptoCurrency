@@ -4,17 +4,27 @@ import { LinkContainer } from "react-router-bootstrap";
 import logo from "../bitcoin.svg";
 import Style from "./header.module.css";
 
-export default function Header({setSearchedValue}) {
-  const [value, setValue] = useState('');
+export default function Header({ setSearchedValue }) {
+  const [value, setValue] = useState("");
+  const [isType, setIsType] = useState(false);
+
   //search input value
   const onChangeHandler = (e) => {
     setValue(e.target.value);
   };
-  const onSearch = (e)=>{
+  const onClear = (e)=>{
     e.preventDefault();
-    setSearchedValue(value);
-    setValue('');
+    setValue("");
+    setSearchedValue('');
+    setIsType(!isType);
   }
+  const onSearch = (e) => {
+    e.preventDefault();
+    if(value !== ''){ 
+      setSearchedValue(value);
+      setIsType(!isType);
+    }
+  };
   return (
     <>
       <header>
@@ -27,7 +37,7 @@ export default function Header({setSearchedValue}) {
                 height="60"
                 className="d-inline-block"
                 alt="React Bootstrap logo"
-                animated='true'
+                animated="true"
               />
               Shitcoin
             </Navbar.Brand>
@@ -36,10 +46,10 @@ export default function Header({setSearchedValue}) {
               <Nav className="me-auto">
                 {/* link container import from bootstrap router instead LINK in normal mode */}
                 <LinkContainer to={"/"}>
-                  <Nav.Link >Home</Nav.Link>
+                  <Nav.Link>Home</Nav.Link>
                 </LinkContainer>
                 <LinkContainer to={"/forum"}>
-                  <Nav.Link >Forum</Nav.Link>
+                  <Nav.Link>Forum</Nav.Link>
                 </LinkContainer>
                 <NavDropdown title="Dropdown test" id="basic-nav-dropdown">
                   <NavDropdown.Item href="/">Action</NavDropdown.Item>
@@ -52,20 +62,29 @@ export default function Header({setSearchedValue}) {
                 </NavDropdown>
               </Nav>
               <div className={Style.group}></div>
-              <form className="d-flex input-group " id="form1">
+              <form className="d-flex input-group " id="form1" style={{textDecorationLine:"none",boxDecorationBreak:'black'}}>
                 <input
                   type="search"
                   className="form-control col-8"
-                  placeholder="type smthing.."
+                  placeholder="search any coin"
                   onChange={onChangeHandler}
                   value={value}
                 />
-                <button className="btn btn-outline-light col-2 "
-                 variant="dark"
-                 onClick={onSearch}
-                 >
-                  search
-                </button>
+                {isType ? (
+                  <button
+                    onClick={onClear}
+                    className="btn btn-outline-light col-2 "
+                    variant="dark"
+                  >
+                    clear
+                  </button>
+                ):(
+                  <button
+                    className="btn btn-outline-light col-2 "
+                    variant="dark"
+                    onClick={onSearch}
+                  >search</button>
+                ) }
               </form>
             </Navbar.Collapse>
           </Container>

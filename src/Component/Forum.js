@@ -1,7 +1,12 @@
 import React from 'react'
+import { Container } from 'react-bootstrap'
 
 export default function Forum() {
   return (
-    <div>Forum</div>
+    <>
+    <Container>
+      
+    </Container>
+    </>
   )
 }

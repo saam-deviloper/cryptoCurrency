@@ -1,10 +1,10 @@
 import React, { useContext, useState } from "react";
-import { Button, Container, Table } from "react-bootstrap";
+import { Button, Container, Spinner, Table } from "react-bootstrap";
 import { CoinContext } from "../context/CoinContextProvider";
 import Coin from "./shared/Coin";
-import {search} from '../helper/search'
+import { search } from "../helper/search";
 
-export default function Home({searchedItem}) {
+export default function Home({ searchedItem }) {
   const [itemCount, setItemCount] = useState(15);
   const dataContext = useContext(CoinContext);
   return (
@@ -20,11 +20,14 @@ export default function Home({searchedItem}) {
             <cite title="Source Title">-2.7%</cite> change in the last 24 hours.
           </figcaption>
         </figure>
+        {dataContext.length > 0 ? (
+          <>
             <Table
               striped
               hover
               variant="light"
-              className="text-center border-top border-bottom ">
+              className="text-center border-top border-bottom "
+            >
               <thead>
                 <tr>
                   <th>#</th>
@@ -35,7 +38,7 @@ export default function Home({searchedItem}) {
                 </tr>
               </thead>
               <tbody>
-                { search(dataContext,searchedItem).map((item, index) =>
+                {search(dataContext, searchedItem).map((item, index) =>
                   index < itemCount ? <Coin data={item} key={item.id} /> : ""
                 )}
               </tbody>
@@ -49,6 +52,12 @@ export default function Home({searchedItem}) {
             >
               Show +15 more
             </Button>
+          </>
+        ) : (
+          <div className="text-center" style={{position:'fixed',top:'50%',left:"48%"}}>
+          <Spinner animation="border" variant="warning" />
+          </div>
+        )}
       </Container>
     </>
   );

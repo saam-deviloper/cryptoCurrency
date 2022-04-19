@@ -1,4 +1,5 @@
 import React from "react";
+import { Spinner } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
 export default function Coin(props) {
@@ -30,7 +31,9 @@ export default function Coin(props) {
       <tr onClick={()=>{goRouteId(id)}}>
           <td>{market_cap_rank}</td>
           <td className="text-start ps-4 ">
-            <img src={image} height="40px" width="40px" alt="logo" className="pe-1" />
+            {image ? <img src={image} height="40px" width="40px" alt="logo" className="pe-1" />:
+            <Spinner animation="border" variant="warning" />
+            }
             {name}
           </td>
           <td>{sepratedPrice(current_price)}$</td>

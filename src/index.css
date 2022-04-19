@@ -1,3 +1,11 @@
+input[type="search"]{
+  -webkit-search-results-decoration : none;
+  -webkit-search-cancel-button:none;
+  -webkit-search-results-button:none;
+  -webkit-search-results-decoration:  none; 
+}
+
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -5,6 +13,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  
 }
 
 code {

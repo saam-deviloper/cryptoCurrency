@@ -1,6 +1,5 @@
 export const search = (coins, input) => {
   // const {name} =  coins; 
-  console.log(input);
   // console.log(coins);
   //const re = RegExp(`.*${input.toLowerCase().split('').join('.*')}.*`)
   if (input !== '')
