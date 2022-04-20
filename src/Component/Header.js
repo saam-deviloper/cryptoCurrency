@@ -73,14 +73,14 @@ export default function Header({ setSearchedValue }) {
                 {isType ? (
                   <button
                     onClick={onClear}
-                    className="btn btn-outline-light col-2 "
+                    className="btn btn-outline-light col-2 p-2"
                     variant="dark"
                   >
                     clear
                   </button>
                 ):(
                   <button
-                    className="btn btn-outline-light col-2 "
+                    className="btn btn-outline-light col-2 p-2"
                     variant="dark"
                     onClick={onSearch}
                   >search</button>
